@@ -39,6 +39,14 @@ All colors MUST be HSL.
     --ring: 180 100% 50%;
 
     --radius: 0.75rem;
+
+    /* Game store specific colors in HSL */
+    --game-bg: 0 0% 5%;
+    --game-surface: 0 0% 12%;
+    --game-cyan: 180 100% 50%;
+    --game-purple: 267 66% 73%;
+    --game-text: 0 0% 100%;
+    --game-muted: 0 0% 60%;
   }
 
   * {
@@ -46,21 +54,30 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-game-bg text-game-text font-inter;
+    @apply bg-background text-foreground font-inter;
+    background-color: hsl(var(--game-bg));
+    color: hsl(var(--game-text));
   }
 }
 
 @layer utilities {
   .glass-panel {
-    @apply bg-game-glass backdrop-blur-md border border-game-glass-border;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
   
   .glass-strong {
-    @apply bg-black/20 backdrop-blur-lg border border-white/10;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
   
   .text-gradient {
-    @apply bg-gradient-to-r from-game-cyan to-game-purple bg-clip-text text-transparent;
+    background: linear-gradient(to right, hsl(var(--game-cyan)), hsl(var(--game-purple)));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   
   .glow-cyan {

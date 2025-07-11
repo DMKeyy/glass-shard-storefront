@@ -56,13 +56,13 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// Game store specific colors
-				'game-bg': '#0e0e0e',
-				'game-surface': '#1f1f1f',
-				'game-cyan': '#00ffe7',
-				'game-purple': '#a37aff',
-				'game-text': '#ffffff',
-				'game-muted': '#999999',
+				// Game store specific colors using HSL variables
+				'game-bg': 'hsl(var(--game-bg))',
+				'game-surface': 'hsl(var(--game-surface))',
+				'game-cyan': 'hsl(var(--game-cyan))',
+				'game-purple': 'hsl(var(--game-purple))',
+				'game-text': 'hsl(var(--game-text))',
+				'game-muted': 'hsl(var(--game-muted))',
 				'game-glass': 'rgba(255, 255, 255, 0.05)',
 				'game-glass-border': 'rgba(255, 255, 255, 0.1)',
 			},
