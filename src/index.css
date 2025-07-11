@@ -47,7 +47,6 @@ All colors MUST be HSL.
 
   body {
     @apply bg-game-bg text-game-text font-inter;
-    font-family: 'Inter', sans-serif;
   }
 }
 
