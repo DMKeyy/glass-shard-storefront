@@ -10,6 +10,7 @@ import Store from "./pages/Store";
 import GamePage from "./pages/GamePage";
 import Library from "./pages/Library";
 import Cart from "./pages/Cart";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="/game/:id" element={<GamePage />} />
             <Route path="/library" element={<Library />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/settings" element={<Settings />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>

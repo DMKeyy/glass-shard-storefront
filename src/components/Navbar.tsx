@@ -36,7 +36,7 @@ export const Navbar = () => {
             <Link
               key={item.path}
               to={item.path}
-              className={`text-sm font-medium transition-all hover:text-game-cyan ${
+              className={`text-sm font-medium transition-all hover:text-game-cyan hover:-translate-y-1 hover:shadow-md duration-200 ${
                 isActive(item.path) ? "text-game-cyan" : "text-game-muted"
               }`}
             >
@@ -59,20 +59,22 @@ export const Navbar = () => {
         {/* Right Section */}
         <div className="flex items-center space-x-4">
           <Link to="/cart">
-            <Button variant="ghost" size="icon" className="text-game-muted hover:text-game-cyan hover:bg-game-surface">
+            <Button variant="ghost" size="icon" className="text-game-muted hover:text-game-cyan hover:bg-game-surface transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
               <ShoppingCart className="w-5 h-5" />
             </Button>
           </Link>
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-game-muted hover:text-game-cyan hover:bg-game-surface">
+              <Button variant="ghost" size="icon" className="text-game-muted hover:text-game-cyan hover:bg-game-surface transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
                 <User className="w-5 h-5" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="glass-panel border-game-glass-border">
               <DropdownMenuItem className="text-game-text hover:bg-game-surface">Profile</DropdownMenuItem>
-              <DropdownMenuItem className="text-game-text hover:bg-game-surface">Settings</DropdownMenuItem>
+              <Link to="/settings">
+                <DropdownMenuItem className="text-game-text hover:bg-game-surface">Settings</DropdownMenuItem>
+              </Link>
               <DropdownMenuItem className="text-game-text hover:bg-game-surface">Sign Out</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -80,7 +82,7 @@ export const Navbar = () => {
           {/* Mobile Menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden text-game-muted hover:text-game-cyan">
+              <Button variant="ghost" size="icon" className="md:hidden text-game-muted hover:text-game-cyan transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
                 <Menu className="w-5 h-5" />
               </Button>
             </SheetTrigger>
@@ -100,7 +102,7 @@ export const Navbar = () => {
                       key={item.path}
                       to={item.path}
                       onClick={() => setIsOpen(false)}
-                      className={`text-lg font-medium transition-all hover:text-game-cyan ${
+                      className={`text-lg font-medium transition-all hover:text-game-cyan hover:-translate-y-1 hover:shadow-md duration-200 ${
                         isActive(item.path) ? "text-game-cyan" : "text-game-text"
                       }`}
                     >

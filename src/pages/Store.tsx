@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { GameCard } from "@/components/GameCard";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const Store = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -53,7 +54,7 @@ const Store = () => {
       originalPrice: 59.99,
       discount: 33,
       rating: 4.6,
-      image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop",
+      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=300&fit=crop",
       tags: ["Fantasy", "Action"]
     },
     {
@@ -103,6 +104,8 @@ const Store = () => {
       tags: ["Adventure", "Mystery"]
     }
   ];
+
+  const gameCardRefs = games.map(() => useScrollAnimation<HTMLDivElement>());
 
   const FilterSidebar = () => (
     <div className="space-y-6">
@@ -268,8 +271,14 @@ const Store = () => {
                 ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
                 : "space-y-4"
             }>
-              {games.map((game) => (
-                <GameCard key={game.id} {...game} />
+              {games.map((game, i) => (
+                <div
+                  key={game.id}
+                  ref={gameCardRefs[i].ref}
+                  className={`fade-in-up${gameCardRefs[i].visible ? ' visible' : ''}`}
+                >
+                  <GameCard {...game} />
+                </div>
               ))}
             </div>
 

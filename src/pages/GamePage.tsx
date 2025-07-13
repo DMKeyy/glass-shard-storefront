@@ -303,7 +303,7 @@ const GamePage = () => {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Purchase Card */}
-            <Card className="glass-panel p-6 sticky top-24">
+            <Card className="glass-panel p-6">
               <div className="space-y-6">
                 <div>
                   <h1 className="text-2xl font-bold text-game-text mb-2">{game.title}</h1>

@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Star } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 interface GameCardProps {
   id: string;
@@ -30,10 +31,12 @@ export const GameCard = ({
   isNew 
 }: GameCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { ref, visible } = useScrollAnimation<HTMLDivElement>();
 
   return (
     <Card 
-      className="glass-panel overflow-hidden transition-all duration-300 hover:scale-105 hover-glow cursor-pointer group"
+      ref={ref}
+      className={`glass-panel overflow-hidden transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover-glow cursor-pointer group fade-in-up${visible ? ' visible' : ''}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

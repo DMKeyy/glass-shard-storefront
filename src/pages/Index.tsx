@@ -6,9 +6,11 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { GameCard } from "@/components/GameCard";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [slideDirection, setSlideDirection] = useState<'left' | 'right' | null>(null);
 
   const featuredGames = [
     {
@@ -33,7 +35,7 @@ const Index = () => {
       id: "3",
       title: "Shadow Realms",
       description: "Uncover the mysteries of the dark fantasy world.",
-      image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=1200&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200&h=600&fit=crop",
       price: 39.99,
       originalPrice: 59.99,
       discount: 33
@@ -81,6 +83,34 @@ const Index = () => {
     }
   ];
 
+  // Add a list of future added games
+  const futureGames = [
+    {
+      id: 'f1',
+      title: 'Neon Horizon',
+      releaseDate: '2024-08-15',
+      image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=400&h=300&fit=crop',
+      description: 'A breathtaking journey through a neon-lit city of the future.'
+    },
+    {
+      id: 'f2',
+      title: 'Starbound Legacy',
+      releaseDate: '2024-09-10',
+      image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&h=300&fit=crop',
+      description: 'Explore the stars and uncover ancient secrets in this epic space RPG.'
+    },
+    {
+      id: 'f3',
+      title: 'Mystic Realms: Awakening',
+      releaseDate: '2024-10-01',
+      image: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?w=400&h=300&fit=crop',
+      description: 'Magic returns to the world in this story-driven fantasy adventure.'
+    }
+  ];
+
+  const featuredSection = useScrollAnimation<HTMLDivElement>();
+  const trendingRefs = trendingGames.map(() => useScrollAnimation<HTMLDivElement>());
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % featuredGames.length);
@@ -90,24 +120,28 @@ const Index = () => {
   }, [featuredGames.length]);
 
   const nextSlide = () => {
+    setSlideDirection('right');
     setCurrentSlide((prev) => (prev + 1) % featuredGames.length);
   };
 
   const prevSlide = () => {
+    setSlideDirection('left');
     setCurrentSlide((prev) => (prev - 1 + featuredGames.length) % featuredGames.length);
   };
 
   return (
     <div className="min-h-screen">
       {/* Hero Carousel */}
-      <section className="relative h-[70vh] overflow-hidden">
+      <section ref={featuredSection.ref} className={`relative h-[70vh] overflow-hidden fade-in-up${featuredSection.visible ? ' visible' : ''}`}>
         <div className="absolute inset-0">
           <img 
             src={featuredGames[currentSlide].image}
             alt={featuredGames[currentSlide].title}
-            className="w-full h-full object-cover"
+            className={`w-full h-full object-cover ${slideDirection === 'left' ? 'slide-in-left' : slideDirection === 'right' ? 'slide-in-right' : ''}`}
+            onAnimationEnd={() => setSlideDirection(null)}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+          <div className="hero-fade-bottom" />
         </div>
         
         <div className="relative container mx-auto px-4 h-full flex items-center">
@@ -205,14 +239,40 @@ const Index = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {trendingGames.map((game) => (
-            <GameCard key={game.id} {...game} />
+          {trendingGames.map((game, i) => (
+            <div
+              key={game.id}
+              ref={trendingRefs[i].ref}
+              className={`fade-in-up${trendingRefs[i].visible ? ' visible' : ''}`}
+            >
+              <GameCard {...game} />
+            </div>
           ))}
         </div>
       </section>
 
-      {/* Categories */}
+      {/* Future Added Games */}
       <section className="py-16 bg-gradient-to-b from-transparent to-game-surface/30">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center space-x-3 mb-8">
+            <Star className="w-6 h-6 text-game-cyan" />
+            <h2 className="text-3xl font-bold text-game-text">Coming Soon</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {futureGames.map((game) => (
+              <Card key={game.id} className="glass-panel p-6 flex flex-col items-center text-center hover:scale-105 transition-all cursor-pointer hover-glow group">
+                <img src={game.image} alt={game.title} className="w-full h-40 object-cover rounded mb-4" />
+                <h3 className="font-semibold text-game-text text-xl mb-2 group-hover:text-game-cyan transition-colors">{game.title}</h3>
+                <p className="text-sm text-game-muted mb-2">{game.description}</p>
+                <span className="text-xs text-game-cyan font-medium">Coming {game.releaseDate}</span>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Categories */}
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="flex items-center space-x-3 mb-8">
             <Star className="w-6 h-6 text-game-purple" />
@@ -239,6 +299,21 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="bg-game-surface/80 border-t border-game-glass-border py-8 mt-12">
+        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center space-x-2">
+            <span className="text-xl font-bold text-gradient">GameVault</span>
+            <span className="text-game-muted">© {new Date().getFullYear()}</span>
+          </div>
+          <div className="flex space-x-4">
+            <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="text-game-muted hover:text-game-cyan transition-colors">Twitter</a>
+            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="text-game-muted hover:text-game-cyan transition-colors">GitHub</a>
+            <a href="mailto:support@gamevault.com" className="text-game-muted hover:text-game-cyan transition-colors">Contact</a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
