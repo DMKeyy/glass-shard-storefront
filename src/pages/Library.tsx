@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { 
   Play, 
   Download, 
@@ -41,6 +41,12 @@ const Library = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
   const [gameSettings, setGameSettings] = useState<any>({});
+  // Remove searchQuery state
+
+  useEffect(() => {
+    setIsModalOpen(false);
+    setIsSettingsModalOpen(false);
+  }, [filterBy, sortBy]);
 
   const games = [
     {
@@ -151,6 +157,272 @@ const Library = () => {
       developer: "Tactical Games",
       releaseDate: "2024-03-28",
       tags: ["Action", "Tactical", "FPS", "Multiplayer"]
+    },
+    {
+      id: "7",
+      title: "Space Colony",
+      status: "installed",
+      lastPlayed: "2 days ago",
+      playtime: "34.7 hours",
+      size: "28.9 GB",
+      image: "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=400&h=300&fit=crop",
+      downloadProgress: 100,
+      description: "Build and manage your own space colony in this strategic simulation game.",
+      developer: "Colony Studios",
+      releaseDate: "2024-04-15",
+      tags: ["Strategy", "Simulation", "Management"]
+    },
+    {
+      id: "8",
+      title: "Ancient Guardians",
+      status: "downloading",
+      lastPlayed: "Never",
+      playtime: "0 hours",
+      size: "41.2 GB",
+      image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400&h=300&fit=crop",
+      downloadProgress: 23,
+      description: "Explore ancient ruins and uncover forgotten secrets in this archaeological adventure.",
+      developer: "Archaeology Games",
+      releaseDate: "2024-05-20",
+      tags: ["Adventure", "Mystery", "Exploration"]
+    },
+    {
+      id: "9",
+      title: "Digital Dreams",
+      status: "installed",
+      lastPlayed: "5 hours ago",
+      playtime: "67.3 hours",
+      size: "19.8 GB",
+      image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=300&fit=crop",
+      downloadProgress: 100,
+      description: "A mind-bending puzzle game that challenges your perception of reality.",
+      developer: "Dream Studios",
+      releaseDate: "2024-02-10",
+      tags: ["Indie", "Puzzle", "Psychological"]
+    },
+    {
+      id: "10",
+      title: "Crystal Quest",
+      status: "not-installed",
+      lastPlayed: "Never",
+      playtime: "0 hours",
+      size: "15.6 GB",
+      image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=300&fit=crop",
+      downloadProgress: 0,
+      description: "Journey through crystal caves and solve ancient puzzles in this enchanting adventure.",
+      developer: "Crystal Games",
+      releaseDate: "2024-06-01",
+      tags: ["Adventure", "Puzzle", "Fantasy"]
+    },
+    {
+      id: "11",
+      title: "Neon Racer",
+      status: "installed",
+      lastPlayed: "1 day ago",
+      playtime: "8.9 hours",
+      size: "22.4 GB",
+      image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=300&fit=crop",
+      downloadProgress: 100,
+      description: "High-speed racing through neon-lit cityscapes with stunning visual effects.",
+      developer: "Neon Racing",
+      releaseDate: "2024-03-01",
+      tags: ["Racing", "Arcade", "Futuristic"]
+    },
+    {
+      id: "12",
+      title: "Mystic Realms: Awakening",
+      status: "update-available",
+      lastPlayed: "3 days ago",
+      playtime: "156.2 hours",
+      size: "73.5 GB",
+      image: "https://images.unsplash.com/photo-1464983953574-0892a716854b?w=400&h=300&fit=crop",
+      downloadProgress: 100,
+      description: "Magic returns to the world in this story-driven fantasy adventure with epic battles.",
+      developer: "Mystic Realms Studio",
+      releaseDate: "2024-01-25",
+      tags: ["RPG", "Fantasy", "Story Rich"]
+    },
+    {
+      id: "13",
+      title: "Cyber Defense",
+      status: "installed",
+      lastPlayed: "4 hours ago",
+      playtime: "23.7 hours",
+      size: "18.3 GB",
+      image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=300&fit=crop",
+      downloadProgress: 100,
+      description: "Defend your digital fortress against waves of cyber threats in this strategic tower defense.",
+      developer: "Cyber Defense Games",
+      releaseDate: "2024-04-10",
+      tags: ["Strategy", "Tower Defense", "Cyberpunk"]
+    },
+    {
+      id: "14",
+      title: "Stellar Command",
+      status: "installed",
+      lastPlayed: "1 week ago",
+      playtime: "45.8 hours",
+      size: "35.2 GB",
+      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop",
+      downloadProgress: 100,
+      description: "Command your fleet across the stars in this epic space strategy game.",
+      developer: "Stellar Command Studios",
+      releaseDate: "2024-02-28",
+      tags: ["Strategy", "Sci-Fi", "Space"]
+    },
+    {
+      id: "15",
+      title: "Shadow Tactics",
+      status: "not-installed",
+      lastPlayed: "Never",
+      playtime: "0 hours",
+      size: "27.8 GB",
+      image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=300&fit=crop",
+      downloadProgress: 0,
+      description: "Master the art of stealth in this tactical infiltration game.",
+      developer: "Shadow Games",
+      releaseDate: "2024-05-15",
+      tags: ["Stealth", "Strategy", "Tactical"]
+    },
+    {
+      id: "16",
+      title: "Quantum Puzzle",
+      status: "installed",
+      lastPlayed: "2 days ago",
+      playtime: "12.4 hours",
+      size: "8.9 GB",
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
+      downloadProgress: 100,
+      description: "Solve mind-bending puzzles using quantum mechanics principles.",
+      developer: "Quantum Games",
+      releaseDate: "2024-03-20",
+      tags: ["Puzzle", "Indie", "Educational"]
+    },
+    {
+      id: "17",
+      title: "Neon Warriors",
+      status: "installed",
+      lastPlayed: "6 hours ago",
+      playtime: "78.3 hours",
+      size: "42.1 GB",
+      image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&h=300&fit=crop",
+      downloadProgress: 100,
+      description: "Fight in epic battles across neon-lit arenas in this action-packed fighting game.",
+      developer: "Neon Warriors Studio",
+      releaseDate: "2024-01-15",
+      tags: ["Action", "Fighting", "Arcade"]
+    },
+    {
+      id: "18",
+      title: "Crystal Kingdom",
+      status: "downloading",
+      lastPlayed: "Never",
+      playtime: "0 hours",
+      size: "33.7 GB",
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+      downloadProgress: 78,
+      description: "Build your kingdom in a world of crystal magic and mystical creatures.",
+      developer: "Crystal Kingdom Games",
+      releaseDate: "2024-06-10",
+      tags: ["Adventure", "Fantasy", "Management"]
+    },
+    {
+      id: "19",
+      title: "Digital Storm",
+      status: "installed",
+      lastPlayed: "1 day ago",
+      playtime: "15.6 hours",
+      size: "24.8 GB",
+      image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=300&fit=crop",
+      downloadProgress: 100,
+      description: "Navigate through digital storms in this fast-paced arcade action game.",
+      developer: "Digital Storm Games",
+      releaseDate: "2024-04-25",
+      tags: ["Action", "Arcade", "Futuristic"]
+    },
+    {
+      id: "20",
+      title: "Ancient Scrolls",
+      status: "installed",
+      lastPlayed: "3 days ago",
+      playtime: "92.1 hours",
+      size: "48.3 GB",
+      image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400&h=300&fit=crop",
+      downloadProgress: 100,
+      description: "Uncover ancient knowledge and powerful magic in this epic RPG adventure.",
+      developer: "Ancient Scrolls Studio",
+      releaseDate: "2024-02-05",
+      tags: ["RPG", "Adventure", "Fantasy"]
+    },
+    {
+      id: "21",
+      title: "Neon Escape",
+      status: "not-installed",
+      lastPlayed: "Never",
+      playtime: "0 hours",
+      size: "16.2 GB",
+      image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=300&fit=crop",
+      downloadProgress: 0,
+      description: "Escape from a neon-lit prison in this challenging puzzle platformer.",
+      developer: "Neon Escape Games",
+      releaseDate: "2024-05-30",
+      tags: ["Puzzle", "Arcade", "Platformer"]
+    },
+    {
+      id: "22",
+      title: "Stellar Conquest",
+      status: "installed",
+      lastPlayed: "1 week ago",
+      playtime: "203.7 hours",
+      size: "56.9 GB",
+      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop",
+      downloadProgress: 100,
+      description: "Conquer the galaxy in this epic 4X space strategy game.",
+      developer: "Stellar Conquest Studios",
+      releaseDate: "2024-01-20",
+      tags: ["Strategy", "4X", "Space"]
+    },
+    {
+      id: "23",
+      title: "Cyber Hunt",
+      status: "installed",
+      lastPlayed: "2 days ago",
+      playtime: "34.2 hours",
+      size: "29.4 GB",
+      image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=300&fit=crop",
+      downloadProgress: 100,
+      description: "Hunt down cyber criminals in this stealth action game.",
+      developer: "Cyber Hunt Games",
+      releaseDate: "2024-03-10",
+      tags: ["Stealth", "Action", "Cyberpunk"]
+    },
+    {
+      id: "24",
+      title: "Neon Horizon",
+      status: "update-available",
+      lastPlayed: "1 day ago",
+      playtime: "67.8 hours",
+      size: "51.3 GB",
+      image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=400&h=300&fit=crop",
+      downloadProgress: 100,
+      description: "Explore the neon horizon in this breathtaking action adventure.",
+      developer: "Neon Horizon Studio",
+      releaseDate: "2024-02-15",
+      tags: ["Action", "Adventure", "Cyberpunk"]
+    },
+    {
+      id: "25",
+      title: "Starbound Legacy",
+      status: "installed",
+      lastPlayed: "4 days ago",
+      playtime: "128.5 hours",
+      size: "63.7 GB",
+      image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&h=300&fit=crop",
+      downloadProgress: 100,
+      description: "Continue the legacy in this epic space RPG with branching storylines.",
+      developer: "Starbound Legacy Studios",
+      releaseDate: "2024-01-30",
+      tags: ["RPG", "Sci-Fi", "Story Rich"]
     }
   ];
 
@@ -691,12 +963,9 @@ const Library = () => {
     </Dialog>
   );
 
-  const filteredGames = games.filter(game => {
-    if (filterBy === 'all') return true;
-    return game.status === filterBy;
-  });
-
-  const cardRefs = filteredGames.map(() => useScrollAnimation<HTMLDivElement>());
+  // Filtering logic
+  // Remove filteredGames logic, use games directly
+  const cardRefs = games.map(() => useScrollAnimation<HTMLDivElement>());
 
   return (
     <div className="min-h-screen">
@@ -705,18 +974,12 @@ const Library = () => {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
           <div>
             <h1 className="text-3xl font-bold text-game-text mb-2">My Library</h1>
-            <p className="text-game-muted">{filteredGames.length} games in your library</p>
+            <p className="text-game-muted">{games.length} games in your library</p>
           </div>
 
           <div className="flex items-center space-x-4">
             {/* Search */}
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-game-muted" />
-              <Input
-                placeholder="Search library..."
-                className="pl-10 w-64 bg-game-surface border-game-glass-border text-game-text placeholder-game-muted focus:border-game-cyan"
-              />
-            </div>
+            {/* Remove Search Bar */}
 
             {/* Filter */}
             <Select value={filterBy} onValueChange={setFilterBy}>
@@ -780,7 +1043,7 @@ const Library = () => {
 
         {/* Games List */}
         <div className="space-y-4">
-          {filteredGames.map((game, i) => (
+          {games.map((game, i) => (
             <div key={game.id} ref={cardRefs[i].ref} className={`fade-in-up${cardRefs[i].visible ? ' visible' : ''}`}>
               <GameListCard game={game} />
             </div>
@@ -788,7 +1051,7 @@ const Library = () => {
         </div>
 
         {/* Empty State */}
-        {filteredGames.length === 0 && (
+        {games.length === 0 && (
           <div className="text-center py-16">
             <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-game-surface flex items-center justify-center">
               <Filter className="w-12 h-12 text-game-muted" />

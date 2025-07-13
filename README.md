@@ -1,15 +1,15 @@
-# 🎮 Glass Shard Storefront
+# GameVault
 
 A modern, responsive game storefront built with React, TypeScript, and Tailwind CSS. Experience a sleek, glass-morphism design with smooth animations and a comprehensive gaming platform.
 
-![Glass Shard Storefront](https://img.shields.io/badge/React-18.3.1-blue?style=for-the-badge&logo=react)
+![GameVault](https://img.shields.io/badge/React-18.3.1-blue?style=for-the-badge&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.5.3-blue?style=for-the-badge&logo=typescript)
 ![Vite](https://img.shields.io/badge/Vite-5.4.1-purple?style=for-the-badge&logo=vite)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4.11-38B2AC?style=for-the-badge&logo=tailwind-css)
 
-## ✨ Features
+## Features
 
-### 🎯 Core Functionality
+### Core Functionality
 - **Game Store**: Browse and discover games with detailed information
 - **Game Library**: Manage your purchased games collection
 - **Shopping Cart**: Add games to cart with real-time updates
@@ -17,14 +17,14 @@ A modern, responsive game storefront built with React, TypeScript, and Tailwind 
 - **User Settings**: Customize your profile and preferences
 - **Responsive Design**: Optimized for desktop, tablet, and mobile
 
-### 🎨 Design & UX
+### Design & UX
 - **Glass Morphism**: Modern glass-panel design with transparency effects
 - **Smooth Animations**: Scroll-triggered animations and micro-interactions
 - **Dark Theme**: Eye-friendly dark color scheme
 - **Interactive Elements**: Hover effects, tooltips, and loading states
 - **Accessibility**: WCAG compliant with proper ARIA labels
 
-### 🛠 Technical Features
+### Technical Features
 - **TypeScript**: Full type safety and better development experience
 - **React Query**: Efficient data fetching and caching
 - **React Router**: Client-side routing with nested routes
@@ -32,7 +32,7 @@ A modern, responsive game storefront built with React, TypeScript, and Tailwind 
 - **Toast Notifications**: User feedback with Sonner toast library
 - **Component Library**: shadcn/ui components for consistent design
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js (v18 or higher)
@@ -78,7 +78,7 @@ npm run preview
 npm run lint
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 glass-shard-storefront/
@@ -109,45 +109,45 @@ glass-shard-storefront/
 └── package.json          # Dependencies and scripts
 ```
 
-## 🎮 Pages Overview
+## Pages Overview
 
-### Homepage (`/`)
+### Homepage (/)
 - Featured games carousel with auto-rotation
 - Trending games section
 - Upcoming releases
 - Hero section with call-to-action
 
-### Store (`/store`)
+### Store (/store)
 - Game catalog with filtering and search
 - Category-based navigation
 - Price filtering and sorting options
 - Game cards with ratings and tags
 
-### Game Details (`/game/:id`)
+### Game Details (/game/:id)
 - Detailed game information
 - Screenshots and media gallery
 - User reviews and ratings
 - Purchase options and add to cart
 
-### Library (`/library`)
+### Library (/library)
 - User's purchased games
 - Game installation status
 - Play time tracking
 - Game categories and favorites
 
-### Cart (`/cart`)
+### Cart (/cart)
 - Shopping cart with game items
 - Price calculations and discounts
 - Checkout process
 - Payment integration ready
 
-### Settings (`/settings`)
+### Settings (/settings)
 - User profile management
 - Account preferences
 - Notification settings
 - Privacy controls
 
-## 🛠 Tech Stack
+## Tech Stack
 
 ### Frontend
 - **React 18.3.1** - UI library with hooks
@@ -173,7 +173,7 @@ glass-shard-storefront/
 - **TypeScript ESLint 8.0.1** - TypeScript linting rules
 - **SWC** - Fast TypeScript/JSX compilation
 
-## 🎨 Design System
+## Design System
 
 The application uses a custom glass-morphism design system with:
 
@@ -183,14 +183,14 @@ The application uses a custom glass-morphism design system with:
 - **Components**: Reusable UI components
 - **Animations**: Smooth transitions and micro-interactions
 
-## 📱 Responsive Design
+## Responsive Design
 
 The application is fully responsive and optimized for:
 - **Desktop**: Full-featured experience with hover effects
 - **Tablet**: Touch-friendly interface with adapted layouts
 - **Mobile**: Streamlined navigation and touch interactions
 
-## 🚀 Deployment
+## Deployment
 
 ### Build for Production
 ```bash
@@ -206,7 +206,7 @@ The built files will be in the `dist` folder, ready for deployment.
 - **GitHub Pages**: Use GitHub Actions to build and deploy
 - **Firebase Hosting**: Deploy using Firebase CLI
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -214,11 +214,11 @@ The built files will be in the `dist` folder, ready for deployment.
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - [shadcn/ui](https://ui.shadcn.com/) for the beautiful component library
 - [Radix UI](https://www.radix-ui.com/) for accessible primitives
@@ -228,4 +228,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Built with ❤️ using React, TypeScript, and Tailwind CSS**
+**Built with React, TypeScript, and Tailwind CSS**
